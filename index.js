@@ -9,7 +9,12 @@ const request = require('superagent');
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+    origin: true,
+    credentials: true
+}));
 
 // const locationData = require('./data/geo.json');
 // const weatherData = require('./data/weather.json');
