@@ -21,7 +21,7 @@ const { mungeLocation } = require('./utils.js');
 app.get('/location', async(req, res) => {
 
     const data = request.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.LOCATIONIQ_Key}&q=${req.query.search}&format=json`);
-    const mungedData = mungeLocation(data);
+    const mungedData = mungeLocation(data.body);
     res.json({ mungedData });
 });
 
