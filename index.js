@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-const locationData = require('./data/geo.json');
+// const locationData = require('./data/geo.json');
 const weatherData = require('./data/weather.json');
 
 const { mungeWeather } = require('./utils.js');
@@ -20,9 +20,9 @@ const { mungeLocation } = require('./utils.js');
 
 app.get('/location', async(req, res) => {
 
-    const data = request.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.LOCATIONIQ_Key}&q=${req.query.search}&format=json`);
+    const data = await request.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.LOCATIONIQ_Key}&q=${req.query.search}&format=json`);
     const mungedData = mungeLocation(data.body);
-    res.json({ mungedData });
+    res.json(mungedData);
 });
 
 
