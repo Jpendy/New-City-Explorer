@@ -17,7 +17,7 @@ function mungeLocation(locationData){
 function mungeWeather(weatherData){
     
     try {
-        const transformedData = weatherData.map(item => {
+        const transformedData = weatherData.data.map(item => {
             return {
                 forecast: item.weather.description,
                 time: item.datetime
