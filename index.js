@@ -34,7 +34,7 @@ app.get('/location', async(req, res) => {
 
 app.get('/weather', async(req, res) => {
 
-    const data = await request.get(`https://api.weatherbit.io/v2.0/forecast/daily?city=${req.query.search}&key=${process.env.WEATHERBIT_KEY}`);
+    const data = await request.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${req.query.latitude}&lon=${req.query.longitude}&key=${process.env.WEATHERBIT_KEY}`);
     const mungedData = mungeWeather(data.body);
     res.json(mungedData);
 });
